@@ -1,0 +1,102 @@
+<% include partials/header  %>
+
+
+<div class="container">
+	<nav class="navbar navbar-dark bg-dark pad">
+	  <h1 class="navbar navbar-brand">
+		  <%= camp.location %>
+		</h1>
+		<%if(currentUser && camp.author.id.equals(currentUser._id) ) {%>
+		<ul class="nav justify-content-end">
+			<li class="nav-item">
+				<a href="/landpage/<%=camp._id%>/edit">Edit</a>
+			</li>
+		</ul>
+		<% } %>
+	</nav>
+	
+	<div class="row">
+		<div class="col-md-3">
+			<ul class="list-group">
+				<li class="list-group-item active">info1</li>
+				<li class="list-group-item">info1</li>
+				<li class="list-group-item">info1</li>
+				<li class="list-group-item">info1</li>
+			</ul>
+			
+			<%if(currentUser && camp.author.id.equals(currentUser._id) ) {%>
+			
+			<form action="/landpage/<%=camp._id%>?_method=DELETE" method="post">
+				<button type="submit" class="btn btn-danger">
+					Delete 
+				</button>
+			</form>
+			
+			<% } %>
+		</div>
+		<div class="col-md-9">
+		<div class="img-thumbnail">
+				<img src="<%=camp.url%>" class="img-fluid" width="100%">
+			<h2>
+		<%= camp.about %>
+	</h2>
+	<p>
+		<%= camp.more %>
+	</p>
+			</div>
+	
+	<div>
+		<nav class="navbar navbar-light bg-light justify-content-end mt-1"> 
+			<a href="/landpage/<%= camp._id %>/comments/new" class="btn btn-secondary">Comment</a>
+		</nav>
+	</div>
+	<div style="background-color:rgb(230, 230, 230)" class="p-2">
+		<% camp.comments.forEach(function(comment){ %>
+		<div class="row">
+			<div class="col-md-12">
+				
+			<strong><%= comment.author.username %></strong>	
+				<span style="float:right">10 days ago</span>
+			<p><%= comment.text %></p>
+			</div>
+			<%if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+			<a href="/landpage/<%=camp._id%>/comments/<%=comment._id %>/edit" class="btn btn-xs btn-info">edit</a>
+			
+			<form action="/landpage/<%= camp._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+				<button type="submit" class="btn btn-xs btn-danger">
+					delete
+				</button>
+			</form>
+			<%}%>
+		</div>
+	
+	<% });%>
+		
+		
+		
+	</div>
+	
+	
+	
+			
+			
+		</div>
+		
+	</div>
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% include partials/footer %>

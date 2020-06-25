@@ -1,0 +1,70 @@
+<% include partials/header  %>
+
+
+<div class="container">
+	
+	<div class="jumbotron">
+		<h1 class="display-4">
+	Welcome to landpage
+</h1>
+		<p>
+			see the campground all over the world
+		</p>
+		<a class="btn btn-info btn-lg" href="/landpage/newlandpage">Add new campground</a>
+		
+	</div>
+		
+	
+
+
+
+<a href = "/landpage">LandPage</a>
+	
+	
+	<h1 display-3>
+		Our Campgrounds
+	</h1>
+	
+	<div class="row">
+		<% info.forEach(function(dest){  %>
+   <div class="col-md-3 pad">
+	   <div class="card" style="width: 18rem;">
+  <img src="<%=dest.url%>" class="card-img-top" height="40%">
+  <div class="card-body">
+    <h5 class="display-5"><%= dest.location %></h5>
+    <p class="card-text"><%=dest.about%></p>
+    <a href="/landpage/<%= dest._id %>" class="btn btn-info">More info</a>
+  </div>
+</div>
+	    
+		   
+		 
+	   
+    </div>
+		
+
+		
+		<% }); %>
+		
+	</div>
+	
+	
+	
+
+
+		
+		
+		</div>
+	
+	
+
+
+
+
+	
+
+
+
+
+
+<% include partials/footer %>

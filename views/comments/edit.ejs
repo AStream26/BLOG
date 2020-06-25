@@ -1,0 +1,46 @@
+<% include ../partials/header %>
+
+<div class="container" >
+	<div>
+		<h1 style="text-align:center">
+			edit comment
+		</h1>
+	</div>
+	
+	<div style="width:50% ;margin: 25px auto;">
+		
+		<form action="/landpage/<%= camp %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+		
+	<div class="form-group">
+		<label>Comment</label>
+		<input  class="form-control"type="text" placeholder = "Comment" name="comment[text]" value="<%= comment.text %>">
+	
+		
+	</div>
+
+		<div class="form-group">
+		
+	<button class="btn btn-primary btn-block" type="submit" >
+		add comment
+	</button>
+		
+	</div>
+		
+		
+	
+</form>
+		
+	</div>
+	
+	
+
+	
+	
+</div>
+
+
+
+
+
+
+<% include ../partials/footer %>
